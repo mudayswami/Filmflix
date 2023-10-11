@@ -1,0 +1,10 @@
+# Ignore a directory named "my_folder"
+/node_modules
+/dist
+.parcel-cache
+# Ignore all files with .log extension
+
+
+# Ignore a specific file
+
+
