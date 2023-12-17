@@ -21,4 +21,16 @@ Movies and Shows streaming web application
     -NetflixGPT
         -Search Bar
         -Movie Suggestions
+
+    
+    
+# Code
+    -Login Page
+        Validation
+          
+    -Firebase 
+        npm install -g firebase-tools
+        firebase init
+        firebase login
+        firebase deploy
 >>>>>>> master
