@@ -27,10 +27,17 @@ Movies and Shows streaming web application
 # Code
     -Login Page
         Validation
-          
+
     -Firebase 
         npm install -g firebase-tools
         firebase init
         firebase login
         firebase deploy
+
+        Authentication
+        
+    -Redux
+        npm i -D @reduxjs/toolkit
+        npm i react-redux
+        
 >>>>>>> master

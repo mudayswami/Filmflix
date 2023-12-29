@@ -2,7 +2,8 @@ import React from "react";
 import { Header } from "./Header";
 import { useState, useRef } from "react";
 import validate from "../utils/validate";
-
+import { auth } from "../utils/firebase";
+import { createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
 export const Login = () => {
   const [sign, setsign] = useState(0);
   const [error_msg, seterror_msg] = useState("");
@@ -19,10 +20,44 @@ export const Login = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(email.current.value);
-          console.log(password.current.value);
-          console.log(validate(email, password));
-            seterror_msg(validate(email, password));
+          const email_login = email.current.value;
+          const password_login = password.current.value;
+          const valid = validate(email, password);
+          seterror_msg(valid);
+
+          if (sign == 0 && valid == null) {
+            // Login IN
+            console.log("LoginIN");
+            signInWithEmailAndPassword(auth, email_login, password_login)
+              .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                console.log(user);
+                // ...
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                seterror_msg(errorCode+" - "+errorMessage);
+              });
+          } else if (sign == 1 && valid == null) {
+            // Sign Up
+            console.log("SignUp");
+            createUserWithEmailAndPassword(auth, email_login, password_login)
+              .then((userCredential) => {
+                // Signed up
+                const user = userCredential.user;
+                console.log(user);
+                // ...
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                seterror_msg(errorCode+ " - " + errorMessage);
+
+                // ..
+              });
+          }
         }}
         className="absolute mx-auto my-20 right-0 left-0 bg-black px-16 py-12 bg-opacity-70 w-1/4 text-white "
       >
@@ -49,7 +84,7 @@ export const Login = () => {
           className="p-4 my-2 rounded bg-zinc-700 w-full"
         ></input>
         <div className="mb-20">
-        <p className="text-red-600">{error_msg}</p>
+          <p className="text-red-600">{error_msg}</p>
           <button className="bg-red-600 rounded w-full py-3 font-bold mt-10">
             {sign == 0 ? "Sign In" : "Sign Up"}
           </button>
