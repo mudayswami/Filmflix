@@ -1,10 +1,23 @@
 <<<<<<< HEAD
 # Filmflix
 Movies and Shows streaming web application
+
 =======
 # Setup
     creating react app
     install tailwindcss
+    header
+    routing 
+    login 
+    sign up
+    validation
+    useRef() Hook
+    firebase setup
+    deploying app on firebase
+    implement sign in user api
+    created redux store for user
+    BUG: redirect user to login and signup is not logged in
+    
     
 # Features
     
@@ -22,7 +35,7 @@ Movies and Shows streaming web application
         -Search Bar
         -Movie Suggestions
 
-    
+    -
     
 # Code
     -Login Page
@@ -39,5 +52,6 @@ Movies and Shows streaming web application
     -Redux
         npm i -D @reduxjs/toolkit
         npm i react-redux
-        
+        configure store
+        create a slice for user
 >>>>>>> master

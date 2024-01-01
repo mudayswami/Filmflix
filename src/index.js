@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from "react-dom/client";
 import {  createBrowserRouter,  RouterProvider,} from "react-router-dom";
-import { Login } from './components/Login';
-import { Header } from './components/Header';
-const approuter = createBrowserRouter([
-   {
-    path:"/",
-    element: <Login />
-   }   
-
-])
+import Body from './components/Body';
+import { Provider } from 'react-redux';
+import appStore from './utils/appStore';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={approuter} />);
+root.render(
+   <Provider store={appStore}>
+    <Body/>
+   </Provider>
+   );
